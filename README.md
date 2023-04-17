@@ -1,6 +1,6 @@
 # Spring-boot-ecommerce-website
 
-Pre requirement:- Spring boot extension Installed in Visual Stuido Code , mysql Database , wamp
+Pre requirement:- Spring boot extension Installed in Visual Stuido Code , MySQL , wamp
 
 (1)
 
