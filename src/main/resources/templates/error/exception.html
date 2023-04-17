@@ -1,0 +1,23 @@
+<!DOCTYPE htmls>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1">	
+    <link rel="stylesheet" th:href="@{/css/error.css}"/>	
+	<title>Exception</title>
+</head>
+<body>
+	<div class="container">
+        <div class="content-container">
+            <h1 class="title-error">An Error Occured</h1>
+            <div class="content-error">An Unknow Error Occured</div>
+            <div class="homepage">
+                <a th:href="@{/}">Back to Home Page</a>
+            </div>
+        </div>
+        <div class="image-container">
+            <img class="image-error" style="width:80%;height:80%;" src="https://thumbs.dreamstime.com/b/d-small-people-green-question-mark-white-background-41182527.jpg">
+        </div>
+    </div>
+</body>
+</html>

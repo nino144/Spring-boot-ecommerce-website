@@ -1,0 +1,23 @@
+input[id^="color-item-"] {
+	display: none;
+}
+
+input[id^="color-item-"] + label:before {
+	content: "";  
+	display: inline-block;  
+	width: 1.5em;  
+	height: 1.5em;  	   
+	margin-right: 8px;  
+	background-color: var(--boxAfterBackColor,yellow);  
+	border-radius: 100%;  
+	border: 2px solid black;
+	vertical-align:middle;
+	margin-bottom: 0.5em;
+}
+
+input[id^="color-item-"]:checked + label:before {
+	content:"✔";
+    color : white;
+	text-align: center;
+}
+

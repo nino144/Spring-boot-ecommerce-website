@@ -1,0 +1,80 @@
+<!DOCTYPE htmls>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/css/index.css}">
+	<link rel="stylesheet" th:href="@{/css/shop.css}">
+	<link rel="stylesheet" th:href="@{/css/order.css}">
+	<link rel="stylesheet" th:href="@{/css/cart.css}">
+	<link rel="stylesheet" th:href="@{/css/order-detail.css}">
+	<link rel="stylesheet" th:href="@{/css/product-manage.css}">
+	<link rel="stylesheet" th:href="@{/css/pagination.css}"/>
+	<link rel="stylesheet" th:href="@{/css/scroll-button.css}"/>
+	<title>Product Manage</title>
+</head>
+<body>
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+	<div class="container">
+		<div th:replace="~{shop.html :: .drop-down-bar}"></div>
+		<div th:replace="~{index.html :: .wrap}"></div>
+		<div class="order-container">
+			<p>Products</p>
+			<div class="order-filter">
+				<a th:href="@{/product-add}" id="add-product-button">+Add New Product</a>
+				<div class="search-shop">
+					<p>Filter By Name</p>
+					<form action="#" style="margin:0;">
+						<input type="text" id="search-field" name="product-name">
+					</form>
+				</div> 
+				<div class="date">
+					<p>Sort By</p>
+					<select id="price-select">
+						<option selected disabled hidden>Price</option>
+						<option th:value="@{'?page=' + ${currentPage} + '&sortField=price&sortDir=asc'}">High</option>
+						<option th:value="@{'?page=' + ${currentPage} + '&sortField=price&sortDir=desc'}">Low</option>
+					  </select>
+				</div>
+			</div>
+			<div class="order-detail-content">
+				<div class="order-table-title">
+					<p>#</p>
+					<p>Image</p>
+					<p style="margin-left:1em">Name</p>
+					<p>Price</p>
+					<p>Action</p>
+				</div>
+				<div class="cart">
+					<div th:each="product, i : ${products}" th:object="${product}" class="cart-item">
+						<p th:text="${i.index + startIndex}">1</p>
+						<p>
+							<img th:src="@{'/image/'+ *{main_image}}" th:alt="*{product_name}" />
+						</p>
+						<p th:text="*{product_name}" style="margin-left: 1em;">White Modern Chair</p>
+						<p th:text="'From $' + *{price}">$130</p>
+						<div class="edit-delete">
+							<a id="edit-button" th:href="@{/product-edit/{id}(id=*{product_id})}" th:text="Edit"></a>
+							<button id="delete-button" 
+								th:text="*{active} ? 'Active' : 'Inactive'"
+								th:onclick="|changeState('*{active}','*{product_id}')|"
+						>Active</button>
+						</div>						
+					</div>
+				</div>
+				<div th:replace="~{shop.html :: .pagination}"></div>
+			</div>
+		</div><!-- order container-->
+	</div><!--container-->
+
+	<div th:replace="~{index.html :: .coupon}"></div>
+    <div th:replace="~{index.html :: .footer}"></div>
+
+	<script th:src="@{/js/index.js}"></script>
+	<script th:src="@{/js/cart.js}"></script>
+	<script th:src="@{/js/shop.js}"></script>
+	<script th:src="@{/js/set-active-inactive.js}"></script>
+	<script th:src="@{/js/scroll-button.js}"></script>
+</body>
+</html>

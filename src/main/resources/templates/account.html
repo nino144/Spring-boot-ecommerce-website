@@ -1,0 +1,85 @@
+<!DOCTYPE htmls>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/css/index.css}"/>
+	<link rel="stylesheet" th:href="@{/css/product-add.css}"/>
+	<link rel="stylesheet" th:href="@{/css/account.css}"/>
+	<link rel="stylesheet" th:href="@{/css/scroll-button.css}"/>
+	<title>Account</title>
+</head>
+<body>
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+	<div class="container">
+		<div th:replace="~{shop.html :: .drop-down-bar}"></div>
+        <div th:replace="~{index.html :: .wrap}"></div>
+		<div class="account-container">
+			<form th:method="post" enctype="multipart/form-data" th:object="${form}" id="account-content">
+				<p>My Account</p>
+				<div class="avatar-container">
+					<img id="image-1" th:src="@{'/image/' + *{main_image}}">
+						<input type="file"
+						name="files"
+						 id="image-choose-1" accept="image/*" onchange="showPreview(event,'image-1');">
+						<label for="file" onclick="document.getElementById('image-choose-1').click();" id="file-choose" class="file-choose">Choose a file</label>
+				</div>
+				<div class="two-thing-one-line">
+					<label for="uname">User Name</label>
+					<input type="text" name="uname" id="account-uname" th:value="*{user_name}" 
+					th:field="*{user_name}"
+					readOnly>
+				</div>
+				<div class="two-thing-one-line">
+					<label for="fname">Password</label>
+					<input type="password" name="password" id="account-password" 
+					th:field="*{password}" readOnly>
+				</div>
+				<div class="two-thing-one-line">
+					<label for="fname">New Password</label>
+					<input type="password" name="repassword" id="account-repassword" 
+					th:field="*{newpassword}" readOnly>
+				</div>
+				<div class="two-thing-one-line">
+					<label for="mail">Email</label>
+				<input type="text" name="mail" id="account-mail" th:value="*{email}"
+				 th:field="*{email}" readOnly>
+				</div>
+				<div class="two-thing-one-line" style="margin-bottom: 0.5em;">
+					<label>Gender</label>
+					<div style="width: 80%;">
+						<input type="radio" id="male" th:value="male" th:field="*{gender}"
+						th:checked="${form.gender == 'male'}" disabled>
+					  	<label style="margin-left:0;" for="male">Male</label>
+						  <input type="radio" id="female" th:value="female" th:field="*{gender}"
+						   th:checked="${form.gender == 'female'}"  disabled>
+					 	<label style="margin-left:0;" for="female">Female</label>
+					</div>
+				</div>
+				<div class="two-thing-one-line">
+					<label for="address">Address</label>	
+					<input type="text" name="address" id="account-address" th:value="*{main_address}"
+					th:field="*{main_address}"
+					readOnly>
+				</div>
+				<div class="two-thing-one-line">
+					<label for="phone">Phone</label>	
+					<input type="number" name="phone" id="account-phone" th:value="*{phone}"
+					th:field="*{phone}" oninput="validity.valid||(value='');"
+					readOnly>
+				</div>
+				<div class="two-thing-one-line button">
+					<button type="button" id="edit" onclick="enable_account()" >Edit</button>
+					<input id="submit" type="submit" value="Update">
+				</div>
+			</form>
+		</div>
+	</div>
+	<div th:replace="~{index.html :: .coupon}"></div>
+    <div th:replace="~{index.html :: .footer}"></div>
+	<script th:src="@{/js/index.js}"></script>
+	<script th:src="@{/js/enable-edit.js}"></script>
+	<script th:src="@{/js/file-upload.js}"></script>
+	<script th:src="@{/js/scroll-button.js}"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+.cart-content {
+	width: 74%;
+    /* height: 100%; */
+    background-color: floralwhite;
+    margin-left: 1em;
+    margin-right: 2em;
+    display: flex;
+}
+
+.cart-content-row-1 {
+	background-color: floralwhite;
+	width: 70%;
+}
+
+.cart-content-row-1 > p {
+	font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5em;
+    margin-top: 1em;
+    color: pink;
+    margin-left: 0.5em;
+}
+
+.cart-content-row-2 {
+	background-color: floralwhite;
+	width: 30%;
+}
+
+.cart {
+	margin-left: 1em;
+    margin-top: 1em;
+}
+
+.cart-table-title {
+	display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: pink;
+    margin-left: 1em;
+}
+
+.cart-table-title p {
+	width: 15%;
+	text-align: left;
+	color: white;
+	font-size: 1.3rem;
+}
+
+.cart-item {
+	display: flex;
+    align-items: center;
+    margin-bottom: 1.5em;
+}
+
+.cart-item img {
+	width: 80px;
+	height: 80px;
+}
+
+.cart-item p {
+	width: 15%;
+	text-align: left;
+}
+
+.quantity {
+	width: 20%;
+}
+
+.quantity-input {
+    height: auto;
+    color: black;
+    width: 40%;
+    padding-left: 0.2em;
+    outline: none;
+    background-color: #D3D3D3;
+    outline: none;
+    border: none;
+}
+
+.quantity p {
+	height: 2.5em;
+}
+
+.cart-total {
+	background-color: pink;
+	margin-left: 1.5em;
+	margin-right: 1em;
+	padding: 1.5em;
+	padding-top: 0.5em;
+	margin-top: 7em;
+}
+
+.cart-total > p {
+	font-size: 1.7em;
+	font-weight: bold;
+}
+
+.cart-total-item {
+	display: flex;
+	justify-content: space-between;
+}
+
+#check-out {
+	margin-top: 3em;
+	background-color: hotpink;
+	color: white;
+	display: block;
+	height: 3em;
+	font-size: 1.5em;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#check-out:hover {
+	color: hotpink;
+	background-color: white;
+	border: 0.1em solid hotpink;
+}
+
+.delete-item {
+    background-color: red;
+    color: white;
+    padding: 0.3em;
+    border-radius: 0.2em;
+}
+
+.delete-item:hover {
+	background-color: white;
+	color: red;
+	border: 0.1em solid red;
+}
+
+
+
+
+
+/*media 750*/
+@media only screen and (max-width:750px) {
+
+	.cart-content {
+		flex-direction: column;
+		width: 100%;
+		margin: 0;
+	}
+
+	.cart-content-row-1 {
+    	width: auto;
+	}
+
+	.cart-content-row-2 {
+    	width: auto; 
+	}
+
+	.cart-total {
+		margin-bottom: 1em;
+	}
+
+}

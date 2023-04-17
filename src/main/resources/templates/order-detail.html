@@ -1,0 +1,72 @@
+<!DOCTYPE htmls>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"><head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/css/index.css}"/>
+	<link rel="stylesheet" th:href="@{/css/shop.css}">
+	<link rel="stylesheet" th:href="@{/css/order.css}">
+	<link rel="stylesheet" th:href="@{/css/cart.css}">
+	<link rel="stylesheet" th:href="@{/css/product.css}">
+	<link rel="stylesheet" th:href="@{/css/order-detail.css}">
+	<link rel="stylesheet" th:href="@{/css/pagination.css}">
+	<link rel="stylesheet" th:href="@{/css/scroll-button.css}">
+	<title>Order detail</title>
+</head>
+<body>
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+	<div class="container">
+		<div th:replace="~{shop.html :: .drop-down-bar}"></div>
+		<div th:replace="~{index.html :: .wrap}"></div>
+		<div class="order-container">
+			<p>Order Detail</p>
+			<div class="order-filter">
+				<div class="search-shop">
+					<p>Filter By Name</p>
+					<form style="margin:0;">
+						<input type="text" id="search-field" name="name-sort">
+					</form>
+				</div> 
+				<div class="date">
+					<p>Sort By</p>
+					<select id="total">
+						<option selected disabled hidden>Total</option>
+						<option th:value="@{'?page=' + ${currentPage} + '&sortField=total&sortDir=asc'}">High</option>
+						<option th:value="@{'?page=' + ${currentPage} + '&sortField=total&sortDir=desc'}">Low</option>
+					</select>
+				</div>
+			</div>
+			<div class="order-detail-content">
+				<div class="order-table-title">
+					<p>#</p>
+					<p>Item ID</p>
+					<p>Image</p>
+					<p>Name</p>
+					<p>Price</p>
+					<p>Quantity</p>
+					<p>Total</p>
+				</div>
+				<div class="cart">
+					<div th:each="detail, i : ${details}" th:object="${detail}" class="cart-item">
+						<p th:text="${i.index + startIndex}">#1</p>
+						<p th:text="*{orderitem_id}"></p>
+                        <p>
+							<img th:src="@{'/image/'+ *{item_image}}" th:alt="*{item_name}" />
+						</p>
+						<p th:text="*{item_name}" style="margin-left: 1em;">White Modern Chair</p>
+						<p th:text="'$ ' + *{price}">$130</p>
+						<p th:text="*{quantity}">4</p>
+						<p th:text="'$ ' + *{total}">4</p>
+					</div>
+				</div>
+			</div>
+			<div th:replace="shop.html :: .pagination"></div>
+		</div><!-- order container-->
+	</div><!--container-->
+	<div th:replace="index.html :: .coupon"></div>
+    <div th:replace="index.html :: .footer"></div>
+	<script th:src="@{/js/index.js}"></script>
+	<script th:src="@{/js/cart.js}"></script>
+	<script th:src="@{/js/order.js}"></script>
+	<script th:src="@{/js/scroll-button.js}"></script>
+</body>
+</html>

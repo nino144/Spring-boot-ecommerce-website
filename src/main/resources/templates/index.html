@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/index.css}"/>
+    <link rel="stylesheet" th:href="@{/css/scroll-button.css}"/>
+    <title>Amado</title>
+</head>
+<body>
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+	<div class="container">
+		<div class="drop-down-bar">
+			<div class="name-drop-down">
+				<h1><a th:href="@{'#'}">Amado</a></h1>
+				<h4><a th:href="@{'#'}">Furniture</a></h4>
+			</div>
+			<div onclick="showAndCloseNavBar()" class="ham-menu">
+				&#8801;
+			</div>
+		</div>
+		<div class="wrap">
+			<div id="navigate">
+				<div class="name">
+					<h1><a th:href="@{/index}">Amado</a></h1>
+					<h4><a th:href="@{/index}">Furniture</a></h4>
+				</div>
+				<div id="close-button" onclick="showAndCloseNavBar()">X</div>
+				<ul>
+                                        <li><a th:href="@{${#ctx.springRequestContext.requestUri == '/index'} ? '#' : '/index'}">HOME</a></li>
+                                        <li sec:authorize="isAuthenticated()"><a th:href="@{${#ctx.springRequestContext.requestUri == '/account'} ? '#' : '/account'}">MY ACCOUNT</a></li>
+                                        <li ><a th:href="@{${#ctx.springRequestContext.requestUri == '/order'} ? '#' : '/order'}">ORDER HISTORY</a></li>
+                                        <li><a th:href="@{${#ctx.springRequestContext.requestUri == '/shop'} ? '#' : '/shop'}">SHOP</a></li>
+                                        <li sec:authorize="isAuthenticated()"><a th:href="@{${#ctx.springRequestContext.requestUri == '/cart'} ? '#' : '/cart'}">CART</a></li>
+                                        <li sec:authorize="isAuthenticated()"><a th:href="@{${#ctx.springRequestContext.requestUri == '/checkout'} ? '#' : '/checkout'}">CHECK OUT</a></li>
+                                        <li th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}"><a th:href="@{${#ctx.springRequestContext.requestUri == '/product-manage'} ? '#' : '/product-manage'}">PRODUCT MANAGE</a></li>
+										<li  th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}"><a th:href="@{${#ctx.springRequestContext.requestUri == '/color'} ? '#' : '/color'}">COLOR</a></li>
+										<li th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}"><a th:href="@{${#ctx.springRequestContext.requestUri == '/category'} ? '#' : '/category'}">CATEGORY</a></li>
+                                        <li th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}"><a th:href="@{${#ctx.springRequestContext.requestUri == '/brand'} ? '#' : '/brand'}">BRAND</a></li>
+                                        <li th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}"><a th:href="@{${#ctx.springRequestContext.requestUri == '/users-manage'} ? '#' : '/users-manage'}">USER</a></li>
+										<li th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}"><a th:href="@{${#ctx.springRequestContext.requestUri == '/order-management'} ? '#' : '/order-management'}">ORDER MANAGEMENT</a></li>
+                                        <li sec:authorize="!isAuthenticated()"><a th:href="@{${#ctx.springRequestContext.requestUri == '/login'} ? '#' : '/login'}">LOGIN</a></li>
+                                        <li sec:authorize="!isAuthenticated()"><a th:href="@{${#ctx.springRequestContext.requestUri == '/register'} ? '#' : '/register'}">REGISTER</a></li>
+										<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">LOGOUT</a></li>
+					<li onclick="showAndClose('search-input')" id="search-click">SEARCH</li>
+					<form th:action="@{/shop}">
+						<input type="text" placeholder="Type your keyword..." name="product-name" id="search-input">
+					</form>
+				</ul>
+				<a th:href="@{/index}" id="discount">%Discount%</a>
+				<a th:href="@{/index}" id="new">New this week</a>
+			</div>
+		</div>
+		<div class="grid-content">
+                        <div th:each="product : ${products}" th:object="${product}" class="box">
+                            <div class="text-overlay">
+                                <p th:text="'From $' + *{price}">From $180</p>
+                                <h3 th:text="*{product_name}">Modern Chair</h3>
+                            </div>
+                            <a th:href="@{/product/{id}(id=*{product_id})}">
+                                <img th:src="@{'/image/'+ *{main_image}}" th:alt="*{product_name}" />
+                            </a>
+                        </div>	
+		</div>
+	</div>
+	<div class="coupon" >
+		<div class="coupon-information"> 
+			<p class="cp-1">Subscribe for a <span>25% Discount</span></p>
+			<p class="cp-2">Nulla ac convallis lorem, eget euismod nisl. Donec in libero sit amet mi vulputate consectetur. Donec auctor interdum purus, ac finibus massa bibendum nec.</p>
+		</div>
+		<form th:action="@{/subscribe}"  method="post" class="Subscribe">
+			<input type="text" placeholder="Your email" class="email-subscribe" name="email">
+			<input type="submit" class="email-button" value="Subscribe">
+		</form>
+	</div>
+	<div class="footer">
+		<div class="title">
+			<p class="footer-title">Amad Furniture</p>
+			<p class="footer-title-2">Simple Website made by myself</p>
+		</div>
+		<div onclick="showAndClose('footer-list')" class="ham-menu-footer">&#8801;
+		</div>
+		<ul id="footer-list">
+			<li><a href="#">HOME</a></li>
+				<li><a th:href="@{/shop}">SHOP</a></li>
+				<li><a th:href="@{/detail}">PRODUCT</a></li>
+				<li><a th:href="@{/cart}">CART</a></li>
+				<li><a th:href="@{/checkout}">CHECKOUT</a></li>	
+		</ul>
+	</div>
+	<script th:src="@{/js/index.js}"></script>
+	<script th:src="@{/js/scroll-button.js}"></script>
+</body>
+</html>

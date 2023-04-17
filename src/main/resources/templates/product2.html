@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Product</title>
+</head>
+<body> 
+    <h1>Product</h1>
+    <div th:each="product : ${products}" th:object="${product}">
+        <p>Product ID: <span th:text="*{product_id}"/></p>
+        <p>Product Name: <span th:text="*{product_name}"/></p>
+        <p>Product Max Quantity: <span th:text="*{max_quantity}"/></p>
+        <p>Product Color: <span th:text="*{color}"/></p>
+        <p>Product Description: <span th:text="*{description}"/></p>
+        <p>Product Price: <span th:text="*{price}"/></p>
+    </div>
+    <h1>Image</h1>
+    <div th:each="image : ${images}" th:object="${image}">
+        <p>Image ID: <span th:text="*{image_id}"/></p>
+        <p>Image: <span th:text="*{url}"/></p>
+        <p>ID of Product Image: <span th:text="*{product.product_id}"/></p>
+    </div>
+    <h1>Category</h1>
+    <div th:each="category : ${categories}" th:object="${category}">
+        <p>Category ID: <span th:text="*{category_id}"/></p>
+        <p>Category Name: <span th:text="*{category_name}"/></p>
+    </div>
+    <h1>Brand</h1>
+    <div th:each="brand : ${brands}" th:object="${brand}">
+        <p>Brand ID: <span th:text="*{brand_id}"/></p>
+        <p>Brand Name: <span th:text="*{brand_name}"/></p>
+    </div>
+    <h1>Users</h1>
+    <div th:each="user : ${users}" th:object="${user}">
+        <p>User ID: <span th:text="*{user_id}"/></p>
+        <p>User Name: <span th:text="*{user_name}"/></p>
+        <p>User Role: <span th:text="*{user_role}"/></p>
+        <p>Password: <span th:text="*{password}"/></p>
+        <p>Phone: <span th:text="*{phone}"/></p>
+        <p>Gender: <span th:text="*{gender}"/></p>
+    </div>
+    <h1>Shipping Address</h1>
+    <div th:each="location : ${address}" th:object="${location}">
+        <p>Address ID: <span th:text="*{id}"/></p>
+        <p>City: <span th:text="*{city}"/></p>
+        <p>District: <span th:text="*{district}"/></p>
+        <p>Street: <span th:text="*{street}"/></p>
+    </div>
+    
+       
+</body>
+</html>

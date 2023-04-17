@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/css/index.css}"/>
+	<link rel="stylesheet" th:href="@{/css/cart.css}">
+	<link rel="stylesheet" th:href="@{/css/product.css}">
+	<link rel="stylesheet" th:href="@{/css/checkout.css}">
+	<link rel="stylesheet" th:href="@{/css/scroll-button.css}"/>
+	<title>Cart</title>
+</head>
+<body>
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+	<div class="container">
+		<div th:replace="~{shop.html :: .drop-down-bar}"></div>
+		<div th:replace="~{index.html :: .wrap}"></div>
+		<div class="cart-content">
+			<form th:method="post" th:object="${form}" id="checkout-form-container">
+				<div class="cart-content-row-1">
+					<div class="checkout-form">
+						<p>Check Out</p>
+						<input type="text" placeholder="User Name" name="uname" id="uname" th:value="*{user_name}" th:field="*{user_name}">
+						<input type="text" placeholder="Email" name="mail" id="mail" th:value="*{email}" th:field="*{email}">
+						<input list="addressList" placeholder="Address" name="address" id="address" th:field="*{address}" required>
+						<datalist id="addressList">
+							<option  th:each="address : ${listAddress}" th:value="${address}"/>
+						</datalist>
+						<div class="form-line-break">		
+							<div class="gender" style="margin-right: 1em;">
+								<label style="color:white;padding-left: 0.5em;">Gender</label>
+								<div>
+									<input type="radio" name="gender" value="male" id="male"
+									 th:checked="*{gender} == 'male'" th:field="*{gender}">
+								  	<label style="color: white;" for="male">Male</label>
+								  	<input type="radio" name="gender" value="female" id="female" 
+									th:checked="*{gender} == 'female'" th:field="*{gender}">
+								 	<label style="color: white;" for="female">Female</label>
+								</div>
+							</div>
+							<input type="text" placeholder="Phone Number" name="phone" id="phone"
+							th:value="*{phone_number}" th:field="*{phone_number}" />
+						</div>
+						<textarea id="text-area" name="text-area" rows="10" cols="50" th:field="*{order_description}"></textarea>
+					</div>
+				</div>
+				<div class="cart-content-row-2">
+					<div class="cart-total">
+						<p>Cart total</p>
+						<div class="cart-total-item">
+							<p>Subtotal:</p>
+							<p th:text="'$ ' + *{total_price}">$140.00</p>
+						</div>
+						<div class="cart-total-item">
+							<p>Delivery:</p>
+							<p>Freezing</p>
+						</div>
+						<div class="cart-total-item">
+							<p>Total:</p>
+							<p th:text="'$ ' + *{total_price}">$140.00</p>
+						</div>
+						<input type="checkbox" id="delivery" name="delivery" value="cash-on-delivery" th:field="*{payment}">
+						<label for="delivery" style="color: black;">Cash On Delivery</label>
+						<input type="submit" id="check-out" value="Check Out">
+					</div>
+				</div>
+			</form>
+			<p th:if="${test != null}" th:text="${formResult}"></p>
+		</div>
+	</div>
+	<div th:replace="~{index.html :: .coupon}"></div>
+    <div th:replace="~{index.html :: .footer}"></div>
+	<script th:src="@{/js/index.js}"></script>
+	<script th:src="@{/js/scroll-button.js}"></script>
+</body>
+</html>

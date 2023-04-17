@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/css/index.css}"/>
+	<link rel="stylesheet" th:href="@{/css/shop.css}"/>
+	<link rel="stylesheet" th:href="@{/css/checkbox.css}"/>
+	<link rel="stylesheet" th:href="@{/css/range-slider.css}"/>
+	<link rel="stylesheet" th:href="@{/css/pagination.css}"/>
+	<link rel="stylesheet" th:href="@{/css/scroll-button.css}"/>
+	<script th:src="@{/js/index.js}"></script>
+	<title>Shop</title>
+</head>
+<body onresize="refresh()" onload="rangeSlide()">
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+	<div class="container">
+		<div class="drop-down-bar">
+			<div class="name-drop-down">
+				<h1><a th:href="@{/index}">Amado</a></h1>
+				<h4><a th:href="@{/index}">Furniture</a></h4>
+			</div>
+			<div onclick="showAndCloseNavBar()" class="ham-menu">
+				&#8801;
+			</div>
+		</div>
+		<div th:replace="~{index.html :: .wrap}"></div>
+		<div class="filter-content">
+			<div class="shop-sidebar">
+				<div class="title">Categories</div>
+				<ul class="categories">
+					<li th:each="category : ${categories}" th:object="${category}">
+                        <a th:href="@{'/shop?cateId=' + *{category_id}}" class="cate-item" th:text="*{category_name}"></a>
+                    </li>
+				</ul>
+				<div class="title" style="margin-bottom: 1.5em;">Brands</div>
+				<form>
+                    <div th:each="brand : ${brands}" th:object="${brand}">
+                        <input 	type="checkbox" 
+                        		id="brands"  
+                            	th:value="*{brand_name}"
+                                th:field="${form.brands}"/>
+                        <label for="vehicle1" th:text=*{brand_name}>Amado</label><br>
+                    </div>
+		  			<div class="title" style="margin-bottom:1.5em;">Color</div>
+                        <div class="color">
+                            <div th:each="color : ${colors}">
+			  					<input 	type="radio"
+                                        th:id="'color-item-' + ${color.color_id}"
+                                        th:value="${color.color}"
+                                        th:field="${form.color}"/>
+                                <label 
+								th:for="'color-item-' + ${color.color_id}"
+								th:id="'label-color-' + ${color.color_id}"/>
+								<input type="text"
+										th:id="'items-' + ${color.color_id}"
+										th:value="${color.color}"
+										style="display:none";/>					
+                            </div>
+			  		</div>
+                    <div class="title">Price</div>
+					<div class="min-max-slider" data-legendnum="3">
+					    <label for="min">Minimum price</label>
+					    <input type="range" id="min" class="min" step="1" min="0" max="3000" th:field="${form.min_price}"/>
+					    <label for="max">Maximum price</label>
+					    <input type="range" id="max" class="max" step="1" min="0" max="3000" th:field="${form.max_price}"/>
+					</div>
+					<input id="filter" type="submit" name="search" >
+                                        
+				</form>
+			</div>
+			<div class="shop-content">
+				<div class="row-shop-1">
+					<div class="search-shop">
+						<p>Filter By Name</p>
+                        <form>
+							<input type="text" id="search-field" name="product-name">
+						</form>
+					</div> 
+					<div class="date">
+						<p>Sort By</p>
+                        <a th:href="@{'/shop?page=' + ${currentPage} + '&sortField=product_name&sortDir=' + ${reverseSortDir}}">Name</a>
+					</div>
+					<div class="price">
+						<select id="price-select">
+						  <option selected disabled hidden>Price</option>
+						  <option th:value="@{'?page=' + ${currentPage} + '&sortField=price&sortDir=asc'}">High</option>
+						  <option th:value="@{'?page=' + ${currentPage} + '&sortField=price&sortDir=desc'}">Low</option>
+						</select>
+					</div>
+				</div>
+				<div class="row-shop-2">
+					<div th:each="product : ${products}" th:object="${product}" class="item">
+						<a th:href="@{/product/{id}(id=*{product_id})}">
+                                                    <img th:src="@{'/image/'+ *{main_image}}" th:alt="*{product_name}" />
+                                                </a>
+						<div class="shop-item-text">
+							<div class="add-to-cart">
+								<h2 th:text="'From $ ' + *{price}">From $180</h2>
+									<form method="post" th:action="@{/shop(product-id=*{product_id})}">
+										<input type="submit" value="Add To Cart" id="add-to-cart-button">
+									</form> 
+							</div>
+							<h3 th:text="*{product_name}">Modern Chair</h3>
+						</div>
+					</div>
+				</div>
+				<div class="pagination" style="margin-right: 1.5em;">
+                    <ul class="pagination-choose">
+                        <li>
+                            <button th:if= "${currentPage !=0 }"
+									th:onclick="|changePage('${currentPage}')|">
+							<</button>
+						</li>
+                        <li th:each="i : ${#numbers.sequence(startPage, endPage)}">
+                            <button th:onclick="|changePage('${i + 1}')|">[[${i + 1}]]</button>
+                        </li> 
+                    	<li>
+                            <button th:if="${currentPage < totalPage -1}" 
+									th:onclick="|changePage('${currentPage + 2}')|"
+							>></button>
+                        </li>
+                    </ul>
+                    <div id="pagination-box">
+                        <input type="number" id="pagination-box-input" name="pagination-type" 
+                               th:max="${totalPage}" th:min="1" oninput="validity.valid||(value='');"/>
+                        <button onclick="document.getElementById('pagination-box-input').change();">Go</button>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+	
+	<div th:replace="~{index.html :: .coupon}"></div>
+    <div th:replace="~{index.html :: .footer}"></div>
+	<script th:src="@{/js/range-slide.js}"></script>
+	<script th:src="@{/js/shop.js}"></script>
+    <script th:src="@{/js/cart.js}"></script>
+	<script th:src="@{/js/color.js}"></script>
+	<script th:src="@{/js/scroll-button.js}"></script>
+</body>
+</html>

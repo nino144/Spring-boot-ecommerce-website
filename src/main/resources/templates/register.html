@@ -1,0 +1,41 @@
+<!DOCTYPE htmls>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/css/index.css}"/>
+	<link rel="stylesheet" th:href="@{/css/scroll-button.css}"/>
+	<link rel="stylesheet" th:href="@{/css/login.css}">
+	<link rel="stylesheet" th:href="@{/css/register.css}">
+	<title>Register</title>
+</head>
+<body>
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+	<div class="container">
+		<div th:replace="shop.html :: .drop-down-bar"></div>
+		<div th:replace="index.html :: .wrap"></div>
+		<div class="form-container">
+			<div class="login-form">
+				<p class="title">Register</p>
+					<form th:method="post" th:object="${form}">
+						<input id="mail" type="text" placeholder="Email" 
+						th:field="*{email}"
+						name="mail" required>
+						<input id="password" type="password" placeholder="Password" 
+						th:field="*{password}"
+						name="password" style="margin-bottom: 1.5em;" required>
+						<input id="password2" type="password" placeholder="Reenter Password" 
+						th:field="*{repassword}"
+						name="password" required>
+						<div th:if="${error != null}" th:text="${error}" class="error"></div>
+						<input type="submit" value="Register">
+					</form>	
+			</div>
+		</div>
+	</div>
+	<div th:replace="~{index.html :: .coupon}"></div>
+        <div th:replace="~{index.html :: .footer}"></div>
+	<script th:src="@{/js/index.js}"></script>
+	<script th:src="@{/js/scroll-button.js}"></script>
+</body>
+</html>

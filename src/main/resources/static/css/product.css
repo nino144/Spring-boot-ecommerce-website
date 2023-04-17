@@ -1,0 +1,157 @@
+.content {
+	width: 74%;
+	margin-left: 1em;
+    background-color: floralwhite;
+}
+
+.row-1 {
+	margin-left: 2em;
+}
+
+.col-1 {
+	font-size: 1em;
+	color: pink;
+	margin-top: 6.5em;
+}
+
+.row-2 {
+	display:flex;
+	margin-left: 2em;
+}
+
+.col-2 {
+	width: 50%;
+}
+
+.col-3 {
+	width: 50%;
+	margin-left: 2em;
+}
+
+.product-title p {
+	border-top : 0.3em solid pink;
+	display: inline-block;
+	margin-bottom: 0;
+	padding-top: 0.3em;
+	margin-top: 0.7em;
+	color: pink;
+	font-size: 1rem;
+}
+
+.product-title h3 {
+	font-size: 2rem;
+  	color: pink;
+  	padding: 0.05em;
+  	margin: 0.1em;
+  	margin-bottom: 2.5em;
+}
+
+.quantity {
+	display: flex;
+	height: 2.5em;
+}
+
+.quantity p {
+    background-color: #D3D3D3;
+    color: black;
+    height: 100%;
+    margin: 0;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#quantity-input {
+    background-color: #D3D3D3;
+    width: 20%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    color: black;
+    height: auto;
+    padding-left: 1.5em;
+    padding-top: 0;
+    padding-bottom: 0;
+    box-sizing: border-box;
+}
+
+.cart-button {
+    margin-top: 1.5em;
+    background-color: pink;
+    color: white;
+    width: 70%;
+    font-size: 2em;
+    display: block;
+    text-align: center;
+    padding: 1em;
+	border: none;
+}
+
+.cart-button:hover {
+	color: pink;
+	background-color: white;
+	border: 0.1em solid pink;
+}
+
+#big-product-detail {
+	width: 98%;
+	max-height: 420px;
+}
+
+.image-detail-slide {
+	display: flex;
+	flex-direction: row;
+	padding-left: 0;
+}
+
+.image-detail-slide li {
+	margin-right: 0.5em;
+}
+
+.image-detail-slide li img {
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*media 750*/
+@media only screen and (max-width:750px) {
+
+	#navigate #search-input {
+    	width: 68%;
+  	}
+
+	.row-2 {
+		display: block;
+		margin-left: 1.5em;
+    	margin-right: 1.5em;
+    	margin-bottom: 4.5em;
+	}
+
+	.col-2 {
+		width: 100%;
+	}
+
+	.content {
+	   width: 100%;
+	   margin-bottom: 0;
+	   margin-left: 0;
+	}
+
+	.image-detail-slide {
+   		margin-top: 1em;
+	}
+	
+}

@@ -1,0 +1,116 @@
+.account-container {
+	width: 74%;
+	background-color: floralwhite;
+	margin-left: 1em;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#account-content {
+	display: flex;
+    flex-direction: column;
+    width: 85%;
+    height: 99%;
+    background-color: pink;
+    justify-content: center;
+    align-items: center;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.two-thing-one-line > input[type="text"],
+.two-thing-one-line > input[type="password"],
+.two-thing-one-line > input[type="number"] {
+	padding: 1em;
+	font-size: 1.2rem;
+    margin-bottom: 1em;
+    width: 80%;
+   	border: none;
+   	background-color: aliceblue;
+}
+
+.two-thing-one-line > input[type="text"]:hover,.two-thing-one-line input[type="text"]:focus,
+.two-thing-one-line > input[type="password"]:hover,.two-thing-one-line input[type="password"]:focus,
+.two-thing-one-line > input[type="number"]:hover,.two-thing-one-line input[type="number"]:focus {
+	outline: none;
+}
+
+.two-thing-one-line > input[type="text"]:hover,
+.two-thing-one-line > input[type="password"]:hover,
+.two-thing-one-line > input[type="number"]:hover {
+	border: 0.1em solid violet;
+}
+
+.two-thing-one-line {
+	display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+label {
+	width: 15%;
+	font-size: 1.3rem;
+	color: white;
+	margin-left: 1em;
+}
+
+#edit {
+	width: 5em;
+    height: 2.5em;
+    background-color: blue;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    padding: 0.2em;
+    border-radius: 2em;
+    margin-right: 1.5em;
+}
+
+#edit:hover {
+	background-color: white;
+	color: blue;
+	border: 0.2em solid blue;
+}
+
+#submit {
+	width: 5em;
+    height: 2.5em;
+    background-color: red;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    padding: 0.2em;
+    border-radius: 2em;
+}
+
+#submit:hover {
+	background-color: white;
+	color: red;
+	border: 0.2em solid red;
+}
+
+form p {
+	color: white;
+    font-size: 3rem;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
+
+
+
+
+/*media 750*/
+@media only screen and (max-width:750px) {
+
+	.account-container {
+		width: 100%;
+		margin-left: 0;
+	}
+
+	#submit, #edit {
+		margin-bottom: 1em;
+	}
+
+}

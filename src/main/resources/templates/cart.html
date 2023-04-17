@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/css/index.css}"/>
+	<link rel="stylesheet" th:href="@{/css/product.css}">
+	<link rel="stylesheet" th:href="@{/css/cart.css}">
+	<link rel="stylesheet" th:href="@{/css/pagination.css}"/>
+	<link rel="stylesheet" th:href="@{/css/scroll-button.css}"/>
+	<title>Cart</title>
+</head>
+<body>
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+	<div class="container">
+        <div th:replace="~{shop.html :: .drop-down-bar}"></div>
+		<div th:replace="~{index.html :: .wrap}"></div>
+		<div class="cart-content">
+			<div class="cart-content-row-1">
+				<p>Shopping Cart</p>
+				<div class="cart-table-title">
+					<p style="width:10%;">#</p>
+					<p>Image</p>
+					<p style="margin-left:1em">Name</p>
+					<p>Price</p>
+					<p>Quantity</p>
+					<p>Total</p>
+					<p>Action</p>
+				</div>
+				<div class="cart">
+					<div th:each="item, i : ${items}" th:object="${item}" class="cart-item">
+						<p th:text="${i.index + startIndex}"style="width: 10%;" >1</p>
+						<img th:src="@{'/image/'+ *{main_image}}" alt="Husky Wooly">
+						<p style="margin-left: 1em;" th:text="*{product_name}">White Modern Chair</p>
+						<p style="padding-left:1.5em" th:text="'$ ' + *{price}">$130</p>
+						<div class="quantity">
+							<p>Qty</p>
+							<input type="number" th:id="'quantity-input-'+ *{cartitem_id}" class="quantity-input"
+                                                               min="0" oninput="validity.valid||(value='');" th:value="*{quantity}" th:max="*{max_quantity}">
+						</div>
+                                                <p th:text="'$ ' + *{total}">$200</p>
+                                                <p style="width:10%;"><a th:href="@{${#ctx.springRequestContext.requestUri}(remove-item=*{cartitem_id})}" class="delete-item">X</a></p>
+					</div>
+				</div>
+                            <div class="pagination" style="margin-right: 1.5em;">
+                                <ul class="pagination-choose">
+                                    <li>
+                                        <a th:if= "${currentPage !=0 }" th:href="@{${#ctx.springRequestContext.requestUri}(page=${currentPage - 1})}" ><</a>
+                                    </li>
+                                    <li th:each="i : ${#numbers.sequence(startPage, endPage)}">
+                                        <a th:href="@{${#ctx.springRequestContext.requestUri}(page=${i})}">[[${i + 1}]]</a>
+                                    </li> 
+                                    <li>
+                                        <a th:if="${currentPage < totalPage -1}" th:href="@{${#ctx.springRequestContext.requestUri}(page=${currentPage + 1})}">></a>
+                                    </li>
+                                </ul>
+                                <div id="pagination-box">
+                                    <input type="number" id="pagination-box-input" name="pagination-type" 
+                                           th:max="${totalPage}" th:min="1" oninput="validity.valid||(value='');"/>
+                                    <button onclick="document.getElementById('pagination-box-input').change();">Go</button>
+                                </div>
+                            </div>
+                               
+                              
+			</div>
+			<div class="cart-content-row-2">
+				<div class="cart-total">
+					<p>Cart total</p>
+					<div class="cart-total-item">
+						<p>Subtotal:</p>
+						<p th:text="'$ ' + ${cartTotal}">$140.00</p>
+					</div>
+					<div class="cart-total-item">
+						<p>Delivery:</p>
+						<p>Free</p>
+					</div>
+					<div class="cart-total-item">
+						<p>Total:</p>
+						<p th:text="'$ ' + ${cartTotal}">$140.00</p>
+					</div>
+					<a id="check-out" th:href="@{/checkout}">Check Out</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:replace="~{index.html :: .coupon}"></div>
+        <div th:replace="~{index.html :: .footer}"></div>
+	<script th:src="@{/js/index.js}"></script>
+        <script th:src="@{/js/cart.js}"></script>
+	<script th:src="@{/js/scroll-button.js}"></script>
+</body>
+</html>

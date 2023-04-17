@@ -1,0 +1,25 @@
+<!DOCTYPE htmls>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/error.css}"/>		
+	<title>Error 404</title>
+</head>
+<body>
+    <div class="container">
+        <div class="content-container">
+            <h1 class="title-error" style="font-size:3em;">OOPS!</h1>
+            <h1 class="title-error" style="font-size:3em;">Page Not Found</h1>
+            <div class="content-error">We can't seem to find the page you're looking for</div>
+            <div class="code-error">Error code 404</div>
+            <div class="homepage">
+                <a th:href="@{/}">Back to Home Page</a>
+            </div>
+        </div>
+        <div class="image-container">
+            <img class="image-error" src="https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg?w=2000">
+        </div> 
+    </div>   
+</body>
+</html>
