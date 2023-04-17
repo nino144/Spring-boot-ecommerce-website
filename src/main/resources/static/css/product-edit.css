@@ -1,0 +1,44 @@
+.button-same-line {
+    height: 2.5em;
+    display: flex;
+}
+
+#edit-product-button {
+	background-color: hotpink;
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    width: 4em;
+    border-radius: 0.5em;
+}
+
+#edit-product-button:hover {
+	background-color: white;
+	color: hotpink;
+	border: 0.1em solid hotpink;
+}
+
+#save-product-button {
+	margin-left: 1em;
+    background-color: blue;
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    width: 4em;
+    border-radius: 0.5em;
+}
+
+#save-product-button:hover {
+	background-color: white;
+	color: blue;
+	border: 0.1em solid blue;
+}
+
+#product-price, #product-name, #text-area {
+    background-color: aliceblue;
+}
+
+select:disabled {
+  background-color: aliceblue;
+  opacity: 1;
+}

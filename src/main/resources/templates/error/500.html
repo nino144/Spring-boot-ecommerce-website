@@ -1,0 +1,24 @@
+<!DOCTYPE htmls>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1">	
+    <link rel="stylesheet" th:href="@{/css/error.css}"/>	
+	<title>Error 500</title>
+</head>
+<body>
+    <div class="container">
+        <div class="content-container">
+            <h1 class="title-error">Internal Server Error</h1>
+            <div class="content-error">Sorry its not you - its us</div>
+            <div class="code-error">Error code 500</div>
+            <div class="homepage">
+                <a th:href="@{/}">Back to Home Page</a>
+            </div>
+        </div>
+        <div class="image-container">
+            <img class="image-error" src="https://www.it-pk.com/wp-content/uploads/2022/03/500-internal-server-error-1.jpeg">
+        </div> 
+    </div>> 
+</body>
+</html>

@@ -1,0 +1,80 @@
+.min-max-slider {
+	position: relative;
+	width: 90%;
+	text-align: center;
+	margin: 0 auto;
+	margin-bottom: 2em;
+	margin-top: 1.3em;
+}
+
+.min-max-slider > label {
+	display: none;
+}
+
+span.value {
+	height: 1.7em; 
+	font-weight: bold;
+	display: inline-block;
+	color: #d52846;
+}
+
+span.value.lower::before {
+	content: "€"; 
+	display: inline-block;
+	color: #d52846;
+}
+
+span.value.upper::before {
+	content: "- €"; 
+	display: inline-block; 
+	margin-left: 0.4em;
+	color: #d52846;
+}
+
+.min-max-slider > .legend {
+	display: flex;
+	justify-content: space-between;
+}
+
+.min-max-slider > .legend > * {
+	font-size: small;
+	opacity: 0.25;
+	display: none;
+}
+
+.min-max-slider > input {
+	cursor: pointer;
+	position: absolute;
+}
+
+/*The input line*/
+.min-max-slider > input {
+  -webkit-appearance: none;
+  outline: none!important;
+  background: transparent;
+  animate: 0.5s;
+  background-color: #d52846;
+	cursor: pointer;
+	height: 0.3em;
+}
+
+/*The ball*/
+.min-max-slider > input::-webkit-slider-thumb { 
+	-webkit-appearance: none; /* Override default look */
+  appearance: none;
+  background: #ffffff;
+	border-radius: 50%;
+	border: 1px solid pink;
+  cursor: pointer;
+	height: 1.2em;
+	width: 1.2em;
+}
+
+.min-max-slider > input::-webkit-slider-runnable-track {
+	cursor: pointer;
+}
+
+/*media 750*/
+@media only screen and (max-width:750px) {
+
+}

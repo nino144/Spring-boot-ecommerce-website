@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/css/index.css}"/>
+	<link rel="stylesheet" th:href="@{/css/category.css}">
+	<link rel="stylesheet" th:href="@{/css/pagination.css}"/>
+	<link rel="stylesheet" th:href="@{/css/scroll-button.css}"/>
+	<title>Amado</title>
+</head>
+<body>
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+	<div class="container">
+		<div th:replace="shop.html :: .drop-down-bar"></div>
+		<div th:replace="index.html :: .wrap"></div>
+		<div class="category-container">
+			<div class="add-edit-category">
+				<p>Brand</p>
+				<form th:method="post" id="add-edit-category">
+					<label for="add-cate">Add Brand</label>
+					<input type="text" id="add-cate" name="add-brand" value="">
+					<input type="submit" value="Add">
+				</form>
+				<form th:method="post" id="add-edit-category">
+					<label for="edit-cate">Edit Brand</label>
+					<input type="text" id="edit-cate" name="edit-brand" style="background-color:aliceblue;" readOnly>
+					<input type="text" id="hidden-brandId" name="brand-id" value="" style="display:none;">
+					<input type="submit" value="Save">
+				</form>
+			</div>
+			<div class="show-list-category">
+				<div class="category-title">
+					<p>#</p>
+					<p>Brand Name</p>
+					<p style="text-align: center;">Action</p>
+				</div>
+				<div th:each="brand, i : ${brands}" th:object="${brand}" class="category-item">
+					<p th:text="${i.index + startIndex}">1</p>
+					<p th:text="*{brand_name}" id="cate-value">Chair</p>
+					<p th:text="*{brand_id}" style="display:none;" id="id-value">Hidden Value</p>
+					<div class="edit-delete">
+						<button type="button" id="edit-button">Edit</button>
+						<button id="delete-button" 
+								th:text="*{active} ? 'Active' : 'Inactive'"
+								th:onclick="|changeState('*{active}','*{brand_id}')|"
+						>Active</button>
+					</div>
+				</div>
+				<div th:replace="shop.html :: .pagination"></div>
+			</div>
+		</div>
+	</div>
+
+	<div th:replace="index.html :: .coupon"></div>
+    <div th:replace="index.html :: .footer"></div>
+
+	<script th:src="@{/js/index.js}"></script>
+	<script th:src="@{/js/cart.js}"></script>
+	<script th:src="@{/js/set-active-inactive.js}"></script>
+	<script th:src="@{/js/choose-to-edit.js}"></script>
+	<script th:src="@{/js/scroll-button.js}"></script>
+</body>
+</html>

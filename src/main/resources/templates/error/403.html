@@ -1,0 +1,24 @@
+<!DOCTYPE htmls>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/error.css}"/>	
+	<title>Error 403</title>
+</head>
+<body>
+	<div class="container">
+        <div class="content-container">
+            <h1 class="title-error">FORBIDEN</h1>
+            <div class="content-error">Sorry,you're not allowed in here</div>
+            <div class="code-error">Error code 403</div>
+            <div class="homepage">
+                <a th:href="@{/}">Back to Home Page</a>
+            </div>
+        </div>
+        <div class="image-container" style="width:50%;">
+            <img class="image-error" src="https://tamermblog.files.wordpress.com/2017/02/alert_icon_1563.jpg?w=640">
+        </div> 
+    </div>
+</body>
+</html>

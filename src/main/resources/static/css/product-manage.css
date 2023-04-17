@@ -1,0 +1,64 @@
+#add-product-button {
+	background-color: hotpink;
+    color: white;
+    padding: 0.5em;
+    font-size: 1.3rem;
+    border-radius: 0.5em;
+}
+
+#add-product-button:hover {
+	background-color: white;
+	color: hotpink;
+	border: 0.1em solid hotpink;
+}
+
+.edit-delete {
+	width: 20%;
+    display: flex;
+}
+
+#edit-button {
+    background-color: blue;
+    color: white;
+    font-size: 1.2rem;
+    padding: 0.2em;
+    border-radius: 0.5em;
+    width: 40%;
+    display: block;
+    text-align: center;
+    margin-right: 0.5em;
+}
+
+#edit-button:hover {
+	background-color: white;
+	color: blue;
+	border: 0.1em solid blue;
+}
+
+#delete-button {
+    text-align: center;
+    background-color: red;
+    color: white;
+    font-size: 1rem;
+    padding: 0.2em;
+    border-radius: 0.5em;
+    display: block;
+    width: 40%;
+    border: none;
+}
+
+#delete-button:hover {
+	background-color: white;
+	color: red;
+	border: 0.1em solid red;
+}
+
+
+
+/*media 750*/
+@media only screen and (max-width:750px) {
+
+	#add-product-button {
+	    font-size: 0.8rem;
+	}
+}

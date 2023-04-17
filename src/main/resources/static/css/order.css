@@ -1,0 +1,83 @@
+.order-container {
+	width: 74%;
+	background-color: floralwhite;
+	margin-left: 1em;
+}
+
+.order-container > p {
+	font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5em;
+    margin-top: 1em;
+    color: pink;
+    margin-left: 0.7em;
+}
+
+.order-filter {
+	display: flex;
+    margin-bottom: 1em;
+    justify-content: flex-end;
+    margin-right: 1em;
+    height: 3em;
+}
+
+#search-field {
+	height: 100%;
+}
+
+.order-title {
+	display: flex;
+    background-color: pink;
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 0.5em;
+    margin-right: 0.7em;
+    margin-left: 0.7em;
+}
+
+.order-title p {
+	width: 18%;
+}
+
+.order-history {
+	height: fit-content;
+    background-color: pink;
+    margin-right: 1em;
+    margin-left: 1em;
+}
+
+.order-item {
+	display: flex;
+	align-items: center;
+	margin-top: 0.5em;
+	margin-right: 1em;
+}
+
+.order-item p {
+	width: 18%;
+	color: white;
+}
+
+#order-detail {
+	color: white;
+	margin-right: 2em;
+    margin-right: 2em;
+    background: blue;
+    padding: 0.5em;
+}
+
+#order-detail:hover {
+	color: blue;
+	background-color: white;
+	border: 0.1em solid blueviolet;
+}
+
+/*media 750*/
+@media only screen and (max-width:750px) {
+	
+	.order-container {
+		width: 100%;
+		margin-left: 0;
+		margin-bottom: 1em;
+	}
+}

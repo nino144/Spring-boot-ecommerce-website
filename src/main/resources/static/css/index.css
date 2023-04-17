@@ -1,0 +1,476 @@
+body {
+  font-size: 1rem;
+  margin: 0;
+}
+
+span {
+  color: pink;
+}
+
+/*Header component*/
+.drop-down-bar {
+  display: none;
+}
+
+.wrap {
+  background-color: floralwhite;
+  width: 26%;
+}
+
+#navigate {
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-bottom: 1em;
+  background-color: floralwhite;
+  display: flex;
+  flex-direction: column;
+  color: pink;
+}
+
+/*Title*/
+.name {
+  margin-bottom: 2em;
+}
+
+.close-button {
+  display: none;
+}
+
+.name h1 {
+  margin-bottom: 0;
+  font-size: 3em;
+  text-align: center
+}
+
+.name h4 {
+  margin-top: 0.3em;
+  font-size: 1.1em;
+  text-align: center;
+}
+
+/* Remove list bullets and identation*/
+ul {
+  margin-left: 3em;
+  list-style-type: none; 
+  margin-left: 0;
+  padding-left: 1.5em;
+}
+
+ul li {
+  padding-bottom: 1em;
+  color: pink;
+}
+
+#close-button {
+  display: none;
+}
+
+/* remove link underline*/
+a { 
+  text-decoration: none; 
+  color: pink;
+}
+
+/* red when hover */
+a:hover {
+ color: red;
+}
+
+#search-click:hover {
+  color: red;
+}
+
+#search-input {
+  width: 58%;
+  height: 35px;
+  padding: 0.2em;
+  font-size: 0.8rem;
+  color: red;
+  border: 0.2em solid pink;
+  margin-bottom: 1em;
+}
+
+#search-input:hover,
+#search-input:focus {
+    outline: none !important;
+    border: 0.2em solid red;
+}
+
+#discount {
+  font-size: 1rem;
+  color: white;
+  background-color: red;
+  padding: 1em;
+  font-weight: bold;
+  width: 45%;
+  text-align: center;
+  margin-left: 1.5em;
+}
+
+#discount:hover {
+  color: red;
+  background-color: white;
+  border: 0.1em solid red;
+  width: 45%;
+}
+
+#new {
+  font-size: 1rem;
+  color: white;
+  background-color: black;
+  padding: 1em;
+  font-weight: bold;
+  width: 45%;
+  text-align: center;
+  margin-top: 1.2em;
+  margin-left: 1.5em;
+}
+
+#new:hover{
+  color: black;
+  background-color: white;
+  border: 0.1em solid black;
+  width: 45%;
+}
+
+/*container for header and grid-content*/
+.container {
+  display: flex;
+}
+
+/*grid-content*/
+.grid-content {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+  width: 74%;
+}
+
+/*grid item*/
+.box img {
+  width: 100%;
+  height: 100%;
+}
+
+/*change text color and image brightness when hover */
+.box:hover .text-overlay p {
+  border-top : 0.3em solid red;
+  color: red;
+}
+
+.box:hover .text-overlay h3 {
+  color: red;
+}
+
+.box:hover img {
+  filter: brightness(70%);
+}
+
+/*place text on image*/
+.text-overlay {
+  padding-left: 1.8em;
+  position: absolute;
+  z-index: 1;
+}
+
+.text-overlay p {
+  border-top : 0.3em solid pink;
+  display: inline-block;
+  margin-bottom: 0;
+  padding-top: 0.3em;
+  margin-top: 0.7em;
+  color: pink;
+  font-size: 1rem;
+}
+
+.text-overlay h3 {
+  font-size: 1.4rem;
+  color: pink;
+  padding: 0.05em;
+  margin: 0.1em;
+}
+
+  /*
+  Coupon,outsite container
+  coupon-information + subscribe
+  */
+.coupon{
+  background-color: black;
+  padding : 3em;
+  opacity: 0.8;
+}
+
+.coupon {
+  display: flex;
+}
+
+.coupon-information{ 
+  width: 60%;
+}
+
+.cp-1 {
+  padding-left: 2em;
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 0;
+  margin-top: 0.5em;
+  text-align: center;
+}
+.cp-2 {
+  margin-top: 0.5em;
+  text-align: center;
+  padding-left: 2em;
+  color: white;
+  font-size: 1rem;
+}
+
+.Subscribe {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.email-subscribe {
+  width: 70%;
+  height: 45%;
+  border: none;
+  padding: 0;
+  font-size: 1.5rem;
+  max-height: 58px;
+}
+
+.email-button {
+  background-color: red;
+  color: white;
+  width: 25%;
+  height: 45%;
+  margin: 0;
+  border: none;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: content-box;
+  padding-top: 0;
+  padding-bottom: 0;
+  max-height: 58px;
+}
+
+/*yellow border in input when hover whole thing*/
+.Subscribe:hover .email-subscribe {
+  outline: none !important;
+  border-top: 2px solid violet;
+  border-bottom: 2px solid violet;
+  border-left: 2px solid violet;
+  box-sizing: content-box;
+}
+
+/*yellow border in button when hover whole thing*/
+.Subscribe:hover .email-button { 
+  border-top: 2px solid violet;
+  border-bottom: 2px solid violet;
+  border-right: 2px solid violet;
+  color: white;
+}
+
+/*remove outline in input*/
+.email-subscribe,.email-subscribe:hover {
+  outline: none !important;
+}
+
+.footer {
+  background-color: black;
+  padding: 1.5em;
+  opacity: 0.9;
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer-title {
+  color: white;
+  font-size: 3em;
+  margin-bottom: 0em;
+}
+
+.footer-title-2 {
+  color: white;
+  font-size: 1.5em;
+}
+
+.ham-menu-footer {
+  display: none;
+}
+
+#footer-list {
+  display: flex;
+  flex-direction: row;
+  margin-top: 3em;
+}
+
+#footer-list li{
+  margin: 2em;
+}
+
+
+/*media 750*/
+@media only screen and (max-width:750px) {
+  
+  .container {
+    flex-direction: column;
+  }
+
+  .wrap {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 46%;
+    transform: translateX(-236%);
+    background-color: floralwhite;
+    z-index: 2;
+  }
+  
+  #navigate {
+   position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background: floralwhite;
+    margin-left: 3em;
+    margin-right: 1em;
+  }
+
+  #navigate #search-input {
+    width: 73%;
+  }
+
+  #navigate #new,#discount{
+   width: 50%;
+   font-size: 0.9em;
+  }
+
+  .name {
+    display: none;
+  }
+
+  ul {
+    margin-top: 8em;
+  }
+
+  #close-button {
+    display: block;
+    font-size: 1.2em;
+    position: fixed;
+    right: 0;
+    background-color: red;
+    padding: 0.2em;
+    color: white;
+  }
+
+  #close-button:hover {
+    color: red;
+    background-color: white;
+    border: 1px solid red;
+  }
+
+  .grid-content {
+
+    display: grid;
+    grid-template-columns: auto auto;
+    width: auto;
+  }
+
+  .coupon {
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 1em;
+  }
+
+  .coupon-information,.Subscribe {
+    margin: 0 auto;
+    width: 80%;
+  }
+
+  .email-subscribe {
+    width: 75%;
+    height: 50px;
+    border: none;
+    padding: 0;
+    font-size: 1.2rem;
+  }
+
+  .email-button {
+    background-color: red;
+    color: white;
+    width: 28%;
+    margin: 0;
+    border: none;
+    font-size: 0.9rem;
+    height: 50px;
+  }
+
+  .drop-down-bar {
+    display: flex;
+    box-shadow: 0 4px 5px black;
+    height: 60px;
+    justify-content: space-between;
+    margin-bottom: 0.3em;
+  }
+
+  .name-drop-down h1 {
+    margin-left: 0.5em;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 2em;
+    color: pink;
+  }
+
+  .name-drop-down h4 {
+    margin-left: 0.5em;
+    margin-top: 0.05em;
+    font-size: 1em;
+    color: pink;
+    text-align: center;
+  }
+
+  .ham-menu {
+    color: pink;
+    font-size: 4em;
+    margin-right: 1em;
+    margin-top: 0;
+  }
+
+  .footer {
+    display: block;
+  }
+
+  #footer-list {
+    display: none;
+  }
+
+  .ham-menu-footer {
+    display: inline-block;
+    height: 25px;
+    width: 3%;
+    padding: 5px;
+    color: white;
+    font-size: 2em;
+    background-color: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+  }
+
+  .ham-menu-footer:hover{
+    color: red;
+    background-color: white;
+    border: 0.025em solid red;
+  }
+
+}
+
+
+
+

@@ -1,0 +1,42 @@
+<!DOCTYPE htmls>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/css/index.css}"/>
+	<link rel="stylesheet" th:href="@{/css/scroll-button.css}"/>
+	<link rel="stylesheet" th:href="@{/css/login.css}">
+	
+	<title>Login</title>
+</head>
+<body>
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+	<div class="container">
+		<div th:replace="~{shop.html :: .drop-down-bar}"></div>
+		<div th:replace="~{index.html :: .wrap}"></div>
+		<div class="form-container">
+			<div class="login-form">
+				<p class="title">Login</p>
+					<form action="login" th:method="post">
+						<input id="mail" type="text" placeholder="Username" name="email" 
+						required>
+						<input id="password" type="password" placeholder="Password" name="password" 
+						
+						required>
+						<div class="login-side-option">
+							<div class="remember-checkbox">
+								<input type="checkbox" id="account-check" name="remember-me">
+								<label for="account-check">Remember Me</label>
+							</div>
+						</div>
+						<input name="submit" type="submit" value="Login">
+					</form>	
+			</div>
+		</div>
+	</div>
+	<div th:replace="~{index.html :: .coupon}"></div>
+    <div th:replace="~{index.html :: .footer}"></div>
+	<script th:src="@{/js/index.js}"></script>
+	<script th:src="@{/js/scroll-button.js}"></script>
+</body>
+</html>

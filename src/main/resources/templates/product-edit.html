@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/css/index.css}"/>
+	<link rel="stylesheet" th:href="@{/css/product-manage.css}">
+	<link rel="stylesheet" th:href="@{/css/product-add.css}">
+	<link rel="stylesheet" th:href="@{/css/color.css}">
+    <link rel="stylesheet" th:href="@{/css/product-edit.css}">
+	<link rel="stylesheet" th:href="@{/css/scroll-button.css}"/>
+	<title>Product edit</title>
+</head>
+<body>
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+	<div class="container">
+		<div th:replace="~{shop.html :: .drop-down-bar}"></div>
+		<div th:replace="~{index.html :: .wrap}"></div>
+		<div class="product-add-container">
+			<form th:action="@{/product-edit/{id}(id=*{product_id})}" th:method="post" th:object="${product}"
+			enctype="multipart/form-data" id="product-add-form">
+				<p class="product-add-title">Edit Product</p>
+				<div class="product-information">
+					<div class="image-container">
+						<img id="image-1" th:src="@{'/image/' + *{main_image}}"
+						style="height: 200px;
+							width: 200px;
+							border-radius: 50%;
+							margin-bottom: 0.5em;">
+						<input type="file"
+						name="files"
+						 id="image-choose-1" accept="image/*" onchange="showPreview(event,'image-1');">
+						<label for="file" onclick="document.getElementById('image-choose-1').click();" id="file-choose">Choose a file</label>
+					</div>
+					<div class="product-detail">
+							<label for="name">Name</label>
+							<input type="text" id="product-name"
+							 class="edit" name="name" 
+							 th:value="*{product_name}" th:field="*{product_name}"
+							 readOnly/>	
+						<div class="color-brand">
+							<select disabled id="product-select-color" name="color"
+							th:field="*{color}">
+								<option disabled hidden value="1">Color</option>
+								<option th:each="color : ${colors}"
+										th:value="${color.color}"
+										th:text="${color.color}"
+										th:selected="${color.color == product.color}"
+										>White</option>
+							</select>
+							<input type="color" id="add-cate" name="add-color" th:value="*{color}" disabled>
+							<select disabled id="product-select-brand" name="brand" 
+							th:field="*{brand_name}" >
+								<option disabled hidden value="1">Brand</option>
+								<option th:each="brand : ${brands}" 
+										th:value="${brand.brand_name}" 
+										th:text="${brand.brand_name}"
+										th:selected="${brand.brand_name == product.brand_name}"
+										>Ikea</option>
+							</select>
+						</div>
+						<select disabled id="product-select-category" name="category"
+						th:field="*{category_name}">
+							<option selected disabled hidden value="1" >Category</option>
+							<option th:each="category : ${categories}" 
+									th:value="${category.category_name}"
+									th:text="${category.category_name}"
+									th:selected="${category.category_name == product.category_name}"
+									>Chair</option>
+						</select>
+						<div class="price-and-productID">
+							<div class="label-input">
+								<label for="product-price">Price</label>
+								<input type="number" id="product-price" name="price"  min="0" 
+								oninput="validity.valid||(value='');" 
+								th:value="*{price}" 
+								th:field="*{price}"
+								readOnly />	
+							</div>
+							<div class="label-input" style="justify-content: center;">
+								<label for="product-price">Quantity</label>
+								<input type="number" id="product-price" name="quantity"  min="0"  
+								oninput="validity.valid||(value='');" 
+								th:value="*{max_quantity}" 
+								th:field="*{max_quantity}"
+								 readOnly />
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<p class="sub-image-title">Sub image of product</p>
+				<div class="image-container-2">
+					<div class="image-item">
+						<img id="image-2" th:src="@{'/image/' + ${images[0].url}}">
+						<input type="file"
+						name="files"
+						 id="image-choose-2" accept="image/*" onchange="showPreview(event,'image-2');">
+						<label for="file" onclick="document.getElementById('image-choose-2').click();" >Choose a file</label>
+					</div>
+					<div class="image-item">
+						<img id="image-3" th:src="@{'/image/' + ${images[1].url}}">
+						<input type="file"
+						name="files"
+						 id="image-choose-3" accept="image/*" onchange="showPreview(event,'image-3');">
+						<label for="file" onclick="document.getElementById('image-choose-3').click();" >Choose a file</label>
+					</div>
+					<div class="image-item">
+						<img id="image-4" th:src="@{'/image/' + ${images[2].url}}">
+						<input type="file"
+						name="files"
+						 id="image-choose-4" accept="image/*" onchange="showPreview(event,'image-4');">
+						<label for="file" onclick="document.getElementById('image-choose-4').click();" >Choose a file</label>
+					</div>
+					<div class="image-item">
+						<img id="image-5" th:src="@{'/image/' + ${images[3].url}}">
+						<input type="file"
+						name="files"
+						 id="image-choose-5" accept="image/*" onchange="showPreview(event,'image-5');">
+						<label for="file" onclick="document.getElementById('image-choose-5').click();" >Choose a file</label>
+					</div>
+				</div>
+				<p class="product-description">Product Description</p>
+
+				<textarea id="text-area" class="edit" name="text-area" rows="6" cols="50"
+				th:value="*{description}"
+				th:field="*{description}"
+				readOnly>Mai Linh là một cô gái kiêu kì</textarea>
+				<div class="button-same-line">
+					<button type="button" onclick="enable_product()" id="edit-product-button">Edit</button>
+					<input type="submit" id="save-product-button" value="Save">
+				</div>
+			</form>
+		</div>
+	</div>
+	<div th:replace="~{index.html :: .coupon}"></div>
+        <div th:replace="~{index.html :: .footer}"></div>
+	<script th:src="@{/js/index.js}"></script>
+	<script th:src="@{/js/scroll-button.js}"></script>
+	<script th:src="@{/js/file-upload.js}"></script>
+	<script th:src="@{/js/enable-edit.js}"></script>
+	<script th:src="@{/js/changeColor.js}"></script>
+</body>
+</html>

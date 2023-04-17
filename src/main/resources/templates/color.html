@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/css/index.css}"/>
+	<link rel="stylesheet" th:href="@{/css/category.css}">
+    <link rel="stylesheet" th:href="@{/css/color.css}">
+	<link rel="stylesheet" th:href="@{/css/pagination.css}"/>
+	<link rel="stylesheet" th:href="@{/css/scroll-button.css}"/>
+	<title>Color</title>
+</head>
+<body>
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+	<div class="container">
+		<div th:replace="~{shop.html :: .drop-down-bar}"></div>
+		<div th:replace="~{index.html :: .wrap}"></div>
+		<div class="category-container">
+			<div class="add-edit-category">
+				<p>Color</p>
+				<form th:method="post" id="add-edit-category">
+					<label for="add-color">Add Color</label>
+					<input type="color" id="add-cate" name="add-color">
+					<input type="submit" value="Add">
+				</form>
+			</div>
+			<div class="show-list-category">
+				<div class="category-title">
+					<p>#</p>
+					<p>Color</p>
+                    <p>Color Name</p>
+					<p style="text-align: center;">Action</p>
+					</div>
+					<div th:each="color, i : ${colors}" th:object="${color}" class="category-item">
+						<p th:text="${i.index + startIndex}">1</p>
+						<p>
+                            <input type="color" name="favcolor" th:value="*{color}" th:id="'color-'+ *{color_id}" disabled> 
+                        </p>
+                        <p th:text="*{color}"></p>
+						<div class="edit-delete" style="justify-content:center;">
+							<button id="delete-button" 
+								th:text="*{active} ? 'Active' : 'Inactive'"
+								th:onclick="|changeState('*{active}','*{color_id}')|"
+						>Active</button>
+						</div>
+					</div>
+				<div th:replace="~{shop.html :: .pagination}"></div>
+			</div>
+		</div>
+	</div>
+
+	<div th:replace="~{index.html :: .coupon}"></div>
+    <div th:replace="~{index.html :: .footer}"></div>
+
+	<script th:src="@{/js/index.js}"></script>
+	<script th:src="@{/js/cart.js}"></script>
+    <script th:src="@{/js/set-active-inactive.js}"></script>
+	<script th:src="@{/js/scroll-button.js}"></script>
+</body>
+</html>
