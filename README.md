@@ -8,8 +8,9 @@ Download and open project folder in Visual Stuido Code
 
 (2)
 
-import database.sql file in database to Create all table 
-Make sure to change the name of your databse to your custom name in application property file
+import database.sql file in database to create all table 
+
+Make sure to change the name of your database to your custom name in application property file
 
 (3)
 
