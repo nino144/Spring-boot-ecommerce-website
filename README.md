@@ -34,4 +34,4 @@ password:123
 
 (5)
 
-For email notification,please use your email and your app password,you can see it after enable two step verifacation in https://myaccount.google.com/
+For email notification,please use your email and your app password,you can see it after enable two step verification in https://myaccount.google.com/
